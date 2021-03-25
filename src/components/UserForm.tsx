@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { toast } from 'react-toastify'
 
 import { IUser } from '../store/modules/user/types'
 import { Button } from '../styles/Home'
@@ -9,28 +10,38 @@ interface createProps {
 }
 
 const UserForm: React.FC<createProps> = ({ createUser }) => {
+  const [ name, setName] = useState('')
+  const [ email, setEmail] = useState('')
+  const [ age, setAge] = useState<number>(1)
 
+  const clearFields = (event: any) => {
+    event.target.name.value = ''
+    event.target.email.value = ''
+    event.target.age.value = 1
+
+    setName('')
+    setEmail('')
+    setAge(0)
+  }
+
+  // FormEvent<HTMLFormElement>
   const addUser = (event: any) => {
     event.preventDefault()
 
-    if (!event.target.name.value || !event.target.email.value || !event.target.age.value) {
-      return
-    }
-
     const newUser = {
-      name: event.target.name.value,
-      email: event.target.email.value,
-      age: event.target.age.value,
+      name: name,
+      email: email,
+      age: age,
       id: "0"
     }
 
     createUser(newUser)
 
-    event.target.name.value = ''
-    event.target.email.value = ''
-    event.target.age.value = ''
+    toast.success(`Aluno cadastrado`)
 
-    return
+
+
+    clearFields(event)
   }
 
   return (
@@ -39,17 +50,17 @@ const UserForm: React.FC<createProps> = ({ createUser }) => {
       <Form onSubmit={addUser}>
         <div>
           <label htmlFor="name">Nome:</label>
-          <input name="name" type="text" />
+          <input name="name" type="text" placeholder="Nome do aluno" onChange={e => setName(e.target.value)} />
         </div>
         <div>
           <label htmlFor="email">Email:</label>
-          <input name="email" type="text" />
+          <input name="email" type="text" placeholder="Email" onChange={e => setEmail(e.target.value)}/>
         </div>
         <div>
           <label htmlFor="age">Idade:</label>
-          <input name="age" type="number" />
+          <input name="age" type="number" placeholder="Idade" onChange={e => setAge(Number(e.target.value))} />
         </div>
-        <Button type="submit">Adicionar</Button>
+        <Button type="submit" disabled={ !name || !email || !age ? true : false }>Adicionar</Button>
       </Form>
     </FormContainer>
   )

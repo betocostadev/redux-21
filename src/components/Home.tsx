@@ -1,6 +1,8 @@
 import React, { useEffect, useCallback, useState } from 'react'
 import { useDispatch } from 'react-redux'
 
+import { toast } from 'react-toastify'
+
 import userService from '../services/users'
 import { IUser } from '../store/modules/user/types'
 import { addNewUser } from '../store/modules/user/actions'
@@ -46,6 +48,8 @@ const Home: React.FC = () => {
   const handleUsers = useCallback((user: IUser) => {
     dispatch(addNewUser(user))
   }, [dispatch])
+
+  // <Button onClick={() => toast(`nice!`)} />
 
   return (
     <HomeContainer>
