@@ -5,6 +5,7 @@ import api from '../services/api'
 
 import { IUser } from '../store/modules/user/types'
 import { addNewUser } from '../store/modules/user/actions'
+import { HomeContainer, Button } from '../styles/Home'
 
 const Home: React.FC = () => {
   const dispatch = useDispatch()
@@ -23,19 +24,23 @@ const Home: React.FC = () => {
   }, [dispatch])
 
   return (
-    <div>
-      <h2>Home</h2>
+    <HomeContainer>
+      <h2 className="title">Lista de candidatos</h2>
       {
         users.map(user => (
-          <div key={user.id}>
+          <div className="users" key={user.id}>
             <article>
-              <p>{user.name} | {user.email}  | {user.age} </p>
-              <button onClick={() => handleUsers(user)}>Adicionar</button>
+              <ul className="user-list">
+                <li className="user-list-item">Nome: {user.name}</li>
+                <li className="user-list-item">Email: {user.email}</li>
+                <li className="user-list-item">Idade: {user.age}</li>
+              </ul>
+              <Button onClick={() => handleUsers(user)}>Matricular</Button>
             </article>
           </div>
         ))
       }
-    </div>
+    </HomeContainer>
   )
 }
 

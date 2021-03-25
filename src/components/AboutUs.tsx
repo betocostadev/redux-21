@@ -3,24 +3,25 @@ import { useSelector } from 'react-redux'
 
 import { IGlobalState } from '../store/modules/user/types'
 
+import { AboutContainer } from '../styles/AboutUs'
+
 const AboutUs: React.FC = () => {
   const state = useSelector((state: IGlobalState) => state.users)
-  console.log(state)
   return (
-    <div>
-      <h2>Matriculados | Academia Accenture 2.1</h2>
+    <AboutContainer>
+      <h2 className="title">Matriculados | Academia Accenture 2.1</h2>
       <>
       {
         state.map((user, index) => (
           <div key={index}>
-            <ul>
-              <li>{user.name}</li>
+            <ul className="user-list">
+              <li className="user-list-item">{user.name}</li>
             </ul>
           </div>
         ))
       }
       </>
-    </div>
+    </AboutContainer>
   )
 }
 

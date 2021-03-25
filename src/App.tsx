@@ -5,6 +5,7 @@ import store from './store/index'
 // import './App.css';
 import AboutUs from './components/AboutUs'
 import Home from './components/Home'
+import GlobalStyle from './styles/GlobalStyle'
 
 const App: React.FC = () => {
   return (
@@ -12,6 +13,7 @@ const App: React.FC = () => {
       <Provider store={store}>
         <Home />
         <AboutUs />
+        <GlobalStyle />
       </Provider>
     </>
   )
