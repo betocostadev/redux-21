@@ -50,5 +50,4 @@ export const Button = styled.button`
     position: relative;
     top: 1px;
   }
-
 `

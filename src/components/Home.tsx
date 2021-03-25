@@ -40,6 +40,7 @@ const Home: React.FC = () => {
           </div>
         ))
       }
+      <h3>Add user</h3>
     </HomeContainer>
   )
 }
