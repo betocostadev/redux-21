@@ -1,23 +1,47 @@
 import React, { useEffect, useCallback, useState } from 'react'
 import { useDispatch } from 'react-redux'
 
-import api from '../services/api'
-
+import userService from '../services/users'
 import { IUser } from '../store/modules/user/types'
 import { addNewUser } from '../store/modules/user/actions'
 import { HomeContainer, Button } from '../styles/Home'
+
+import UserForm from './UserForm'
 
 const Home: React.FC = () => {
   const dispatch = useDispatch()
   const [ users, setUsers ] = useState<IUser[]>([])
 
   useEffect(() => {
-    api.get('students')
-      .then(res => {
-        setUsers(res.data)
-      })
-      .catch(e => console.log(e))
+    getAll()
   }, [])
+
+  const getAll = async () => {
+    try {
+      const users = await userService.getAll()
+      setUsers(users)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const createUser = async (user: IUser) => {
+    try {
+      await userService.create(user)
+      await getAll()
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const handleRemoveUser = async (id: any) => {
+    try {
+      await userService.remove(id)
+      await getAll()
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   const handleUsers = useCallback((user: IUser) => {
     dispatch(addNewUser(user))
@@ -26,6 +50,7 @@ const Home: React.FC = () => {
   return (
     <HomeContainer>
       <h2 className="title">Lista de candidatos</h2>
+      <UserForm createUser={createUser} />
       {
         users.map(user => (
           <div className="users" key={user.id}>
@@ -36,6 +61,7 @@ const Home: React.FC = () => {
                 <li className="user-list-item">Idade: {user.age}</li>
               </ul>
               <Button onClick={() => handleUsers(user)}>Matricular</Button>
+              <Button onClick={() => handleRemoveUser(user.id)}>Remover</Button>
             </article>
           </div>
         ))
