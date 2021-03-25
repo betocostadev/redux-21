@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux'
 import userService from '../services/users'
 import { IUser } from '../store/modules/user/types'
 import { addNewUser } from '../store/modules/user/actions'
-import { HomeContainer, Button } from '../styles/Home'
+import { HomeContainer, Button, UsersContainer, HomeDiv } from '../styles/Home'
 
 import UserForm from './UserForm'
 
@@ -49,24 +49,30 @@ const Home: React.FC = () => {
 
   return (
     <HomeContainer>
-      <h2 className="title">Lista de candidatos</h2>
-      <UserForm createUser={createUser} />
-      {
-        users.map(user => (
-          <div className="users" key={user.id}>
-            <article>
-              <ul className="user-list">
-                <li className="user-list-item">Nome: {user.name}</li>
-                <li className="user-list-item">Email: {user.email}</li>
-                <li className="user-list-item">Idade: {user.age}</li>
-              </ul>
-              <Button onClick={() => handleUsers(user)}>Matricular</Button>
-              <Button onClick={() => handleRemoveUser(user.id)}>Remover</Button>
-            </article>
-          </div>
-        ))
-      }
-      <h3>Add user</h3>
+      <h2 className="title">Academia Accenture 2.1</h2>
+      <HomeDiv>
+        <div className="user-form">
+          <UserForm createUser={createUser} />
+        </div>
+
+        <UsersContainer>
+            {
+              users.map(user => (
+                <div className="users" key={user.id}>
+                  <article>
+                    <ul className="user-list">
+                      <li className="user-list-item">Nome: {user.name}</li>
+                      <li className="user-list-item">Email: {user.email}</li>
+                      <li className="user-list-item">Idade: {user.age}</li>
+                    </ul>
+                    <Button onClick={() => handleUsers(user)}>Matricular</Button>
+                    <Button onClick={() => handleRemoveUser(user.id)}>Remover</Button>
+                  </article>
+                </div>
+              ))
+            }
+        </UsersContainer>
+      </HomeDiv>
     </HomeContainer>
   )
 }

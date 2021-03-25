@@ -8,3 +8,12 @@ export function addNewUser(user: IUser) {
     }
   }
 }
+
+export function removeUser(id: string) {
+  return {
+    type: 'REMOVE_USER',
+    payload: {
+      id
+    }
+  }
+}

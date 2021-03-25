@@ -1,11 +1,12 @@
 import styled from 'styled-components'
 
-export const AboutContainer = styled.div`
+export const SubscribedContainer = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin: 2rem auto;
+  margin: 1rem auto;
+  width: 85%;
   .title {
+    text-align: center;
     margin: 1rem;
   }
   .user-list {
@@ -15,5 +16,10 @@ export const AboutContainer = styled.div`
   }
   .user-list-item {
     align-self: flex-end;
+  }
+  .remove-icon {
+    &:hover {
+      cursor: pointer;
+    }
   }
 `

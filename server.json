@@ -1,19 +1,19 @@
 {
   "students": [
     {
-      "id": 0,
+      "id": "0",
       "name": "Jackson Dourado",
       "email": "jackson@email.com",
       "age": 25
     },
     {
-      "id": 1,
+      "id": "1",
       "name": "Jackson Prateado",
       "email": "prateado@email.com",
       "age": 29
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "John Azulado",
       "email": "azulado@email.com",
       "age": 44
@@ -25,16 +25,22 @@
       "id": "d2e0c764-d3c9-4d17-84b6-2fc7ba66f116"
     },
     {
-      "name": "Joaquim Floriano",
-      "email": "jfloriano@gmail.com",
-      "age": "49",
-      "id": "be192fe3-0c2e-4ab5-9bbe-0371dde1f78d"
-    },
-    {
       "name": "Jackson Six",
       "email": "jacksix@gmail.com",
       "age": "43",
       "id": "622d7aa4-2701-49e8-b5fb-5ae3c2c54244"
+    },
+    {
+      "name": "Antonio Silva",
+      "email": "asilva@gmail.com",
+      "age": "50",
+      "id": "2c8a4a2f-1d94-4556-b425-48112e84d33b"
+    },
+    {
+      "name": "James Hetfield",
+      "email": "james@metallica.com",
+      "age": "63",
+      "id": "75a04c97-bffa-497d-800c-9c62adaf4430"
     }
   ]
 }
