@@ -1,7 +1,7 @@
 import React, { useEffect, useCallback, useState } from 'react'
 import { useDispatch } from 'react-redux'
 
-import { toast } from 'react-toastify'
+// import { toast } from 'react-toastify'
 
 import userService from '../services/users'
 import { IUser } from '../store/modules/user/types'

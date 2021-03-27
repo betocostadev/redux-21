@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { toast } from 'react-toastify'
 
+import { Link } from 'react-router-dom'
+
 import { IUser } from '../store/modules/user/types'
 import { Button } from '../styles/Home'
 
@@ -44,9 +46,11 @@ const UserForm: React.FC<createProps> = ({ createUser }) => {
     clearFields(event)
   }
 
+  // <Link to="https://www.google.com" />
   return (
     <FormContainer>
       <h3 className="description">Inscrever usuário</h3>
+
       <Form onSubmit={addUser}>
         <div>
           <label htmlFor="name">Nome:</label>
