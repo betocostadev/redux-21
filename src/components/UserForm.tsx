@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { toast } from 'react-toastify'
 
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 
 import { IUser } from '../store/modules/user/types'
 import { Button } from '../styles/Home'
