@@ -21,4 +21,5 @@ const remove = async(id: string) => {
   return response
 }
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default { getAll, create, remove }
